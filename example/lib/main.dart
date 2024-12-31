@@ -40,7 +40,7 @@ class Example extends StatefulWidget {
 
 class _ExampleState extends State<Example> {
   final List<PieData> pies = [
-    PieData(value: 0.15, color: Colors.yellow),
+    PieData(value: 0.15, color: Colors.yellow,),
     PieData(value: 0.35, color: Colors.cyan),
     PieData(value: 0.45, color: Colors.lightGreen),
   ];
