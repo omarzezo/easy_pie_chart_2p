@@ -20,6 +20,7 @@ class EasyPieChart extends StatelessWidget {
 
   /// Determines whether the value is shown on each pie slice. Defaults to true.
   final bool showValue;
+  final LinearGradient? gradient ;
 
   /// The starting angle of the pie chart in degrees. Default is -90, which represents CenterTop.
   /// 0 represents CenterRight, 90 represents CenterBottom, and 180 represents CenterLeft.
@@ -75,6 +76,7 @@ class EasyPieChart extends StatelessWidget {
     this.shouldAnimate = true,
     this.animateDuration,
     this.centerText,
+    this.gradient,
     this.child,
     this.style,
     this.centerStyle,
@@ -125,7 +127,9 @@ class EasyPieChart extends StatelessWidget {
             total: total,
             showValue: showValue,
             startAngle: start,
-            pieType: pieType,
+            pieType: pieType,gradient:gradient??const LinearGradient(
+            colors: [Colors.transparent,Colors.transparent],
+          ),
             animateFromEnd: animateFromEnd,
             centerText: child != null ? null : centerText,
             style: style,
