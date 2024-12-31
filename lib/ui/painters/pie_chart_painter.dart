@@ -98,7 +98,7 @@ class _PieChartPainter extends CustomPainter {
         center: Offset(size.width / 2, size.height / 2), radius: radius);
     final borderPaint = Paint()
       ..shader = gradient.createShader(rect)
-      ..color = pieColor
+      // ..color = pieColor
 
       /// If #pietype is set to PieType.fill,
       /// a filled pie will be drawn;
