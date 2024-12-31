@@ -59,7 +59,9 @@ class _PieChartPainter extends CustomPainter {
       /// it means current pie is a gap arc so it color will be transparent
       drawPieArc(
           pieValues[index],
-          gradient!,
+          gradient??const LinearGradient(
+            colors: [Colors.transparent,Colors.transparent],
+          ),
           gap > 0.0 && index % 2 != 0
               ? Colors.transparent
               : pies[index ~/ (gap == 0.0 ? 1 : 2)].color,
@@ -98,13 +100,13 @@ class _PieChartPainter extends CustomPainter {
       ..shader = gradient.createShader(rect)
       ..color = pieColor
 
-    /// If #pietype is set to PieType.fill,
-    /// a filled pie will be drawn;
-    /// otherwise, the pie will only have a border.
+      /// If #pietype is set to PieType.fill,
+      /// a filled pie will be drawn;
+      /// otherwise, the pie will only have a border.
       ..style =
-      pieType == PieType.fill ? PaintingStyle.fill : PaintingStyle.stroke
+          pieType == PieType.fill ? PaintingStyle.fill : PaintingStyle.stroke
 
-    /// Set border width
+      /// Set border width
       ..strokeWidth = borderWidth
       ..strokeCap = borderEdge;
     canvas.drawArc(
@@ -134,7 +136,7 @@ class _PieChartPainter extends CustomPainter {
         text: pieValue.toStringAsFixed(1),
         style: style ?? const TextStyle(color: Colors.black, fontSize: 8.0));
     final textPainter =
-    TextPainter(text: textSpan, textDirection: TextDirection.ltr);
+        TextPainter(text: textSpan, textDirection: TextDirection.ltr);
     textPainter.layout();
     textPainter.paint(canvas,
         Offset(textX - textPainter.width / 2, textY - textPainter.height / 2));
